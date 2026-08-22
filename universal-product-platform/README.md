@@ -134,8 +134,4 @@ nexusforge-engine/
 └── README.md
 ```
 
----
 
-##  License
-
-MIT © NexusForge Engine Contributors.
