@@ -42,7 +42,7 @@ describe('Identity Service', () => {
     it('creates a new user with valid data', () => {
       const result = identityService.register({
         email: 'unit-test-reg@nexusforge.io',
-        password: 'testpass123',
+        password: '*******',
         name: 'Unit Tester',
       });
       assert.strictEqual(result.status, 201);
@@ -58,7 +58,7 @@ describe('Identity Service', () => {
     it('rejects duplicate email', () => {
       const result = identityService.register({
         email: 'unit-test-reg@nexusforge.io',
-        password: 'testpass123',
+        password: '@@@@@',
         name: 'Dup User',
       });
       assert.strictEqual(result.status, 409);
@@ -68,7 +68,7 @@ describe('Identity Service', () => {
     it('rejects invalid email format', () => {
       const result = identityService.register({
         email: 'bademail',
-        password: 'testpass123',
+        password: '@@@@@@@@',
         name: 'Bad Email',
       });
       assert.strictEqual(result.status, 400);
@@ -77,7 +77,7 @@ describe('Identity Service', () => {
     it('rejects short password', () => {
       const result = identityService.register({
         email: 'short@pw.com',
-        password: '123',
+        password: '@@@@',
         name: 'Short PW',
       });
       assert.strictEqual(result.status, 400);
@@ -88,7 +88,7 @@ describe('Identity Service', () => {
     it('succeeds with correct credentials', () => {
       const result = identityService.login({
         email: 'admin@nexusforge.io',
-        password: 'admin123',
+        password: '@@@@@@@@',
       });
       assert.strictEqual(result.status, 200);
       assert.ok(result.data.token);
@@ -98,7 +98,7 @@ describe('Identity Service', () => {
     it('fails with wrong password', () => {
       const result = identityService.login({
         email: 'admin@nexusforge.io',
-        password: 'wrongpass',
+        password: '@@@@@@@',
       });
       assert.strictEqual(result.status, 401);
     });
