@@ -68,7 +68,7 @@ Open your browser at **[http://localhost:3000](http://localhost:3000)** to launc
 - **Administrator:** `admin@nexusforge.io` / `admin123`
 - **Customer User:** `demo@nexusforge.io` / `demo123`
 
----
+
 
 ##  Running Automated Tests
 
@@ -84,7 +84,7 @@ npm run test:api
 npm run test:e2e
 ```
 
----
+
 
 ##  API Domain Catalog
 
