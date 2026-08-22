@@ -66,7 +66,7 @@ describe('Subscription Service', () => {
       const identityService = require('../../services/identity');
       const reg = identityService.register({
         email: 'free-entitlement-test@test.io',
-        password: 'test123',
+        password: '$$$$$$$',
         name: 'Free Tester',
       });
       const userId = reg.data.user.id;
