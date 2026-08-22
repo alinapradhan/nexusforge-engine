@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexusForge Engine — Operations Dashboard</title>
+  <meta name="description" content="NexusForge Engine: API-first digital product, catalog, subscription & analytics platform dashboard.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+  <!-- ═══ Loading Screen ═══ -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loading-content">
+      <div class="loading-logo">⚡</div>
+      <h1 class="loading-title">NexusForge Engine</h1>
+      <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+      <p class="loading-text">Initializing platform services...</p>
+    </div>
+  </div>
+
+  <!-- ═══ App Shell ═══ -->
+  <div id="app" class="app" style="display:none;">
+    <!-- ─── Sidebar ─── -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-icon">⚡</span>
+        <div class="brand-text">
+          <span class="brand-name">NexusForge</span>
+          <span class="brand-sub">Engine v1.0</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-view="dashboard" id="nav-dashboard">
+          <span class="nav-icon">📊</span>
+          <span class="nav-label">Dashboard</span>
+        </button>
+        <button class="nav-item" data-view="products" id="nav-products">
+          <span class="nav-icon">📦</span>
+          <span class="nav-label">Products</span>
+        </button>
+        <button class="nav-item" data-view="subscriptions" id="nav-subscriptions">
+          <span class="nav-icon">💎</span>
+          <span class="nav-label">Subscriptions</span>
+        </button>
+        <button class="nav-item" data-view="activity" id="nav-activity">
+          <span class="nav-icon">📡</span>
+          <span class="nav-label">Activity Feed</span>
+        </button>
+        <button class="nav-item" data-view="api-playground" id="nav-api-playground">
+          <span class="nav-icon">🔧</span>
+          <span class="nav-label">API Playground</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="engine-status">
+          <span class="status-dot pulse"></span>
+          <span class="status-text">Engine Online</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ─── Main Content ─── -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button id="menu-toggle" class="menu-toggle">☰</button>
+          <h1 id="page-title" class="page-title">Dashboard</h1>
+        </div>
+        <div class="header-right">
+          <div class="header-search">
+            <input type="text" id="global-search" placeholder="Search products, users..." autocomplete="off">
+          </div>
+          <div id="auth-section" class="auth-section">
+            <button id="login-btn" class="btn btn-primary btn-sm">Sign In</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Views Container -->
+      <div id="views-container" class="views-container">
+
+        <!-- ══ Dashboard View ══ -->
+        <section id="view-dashboard" class="view active">
+          <div class="metrics-grid" id="metrics-grid">
+            <div class="metric-card glass" id="metric-users">
+              <div class="metric-icon">👥</div>
+              <div class="metric-info">
+                <span class="metric-value" id="val-users">—</span>
+                <span class="metric-label">Total Users</span>
+              </div>
+            </div>
+            <div class="metric-card glass" id="metric-products">
+              <div class="metric-icon">📦</div>
+              <div class="metric-info">
+                <span class="metric-value" id="val-products">—</span>
+                <span class="metric-label">Products</span>
+              </div>
+            </div>
+            <div class="metric-card glass" id="metric-subs">
+              <div class="metric-icon">💎</div>
+              <div class="metric-info">
+                <span class="metric-value" id="val-subs">—</span>
+                <span class="metric-label">Active Subs</span>
+              </div>
+            </div>
+            <div class="metric-card glass" id="metric-revenue">
+              <div class="metric-icon">💰</div>
+              <div class="metric-info">
+                <span class="metric-value" id="val-revenue">—</span>
+                <span class="metric-label">Net Revenue</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-grid">
+            <div class="card glass chart-card" id="events-chart-card">
+              <h3 class="card-title">📈 Event Activity (7 Days)</h3>
+              <div class="chart-container" id="events-chart"></div>
+            </div>
+            <div class="card glass" id="engine-info-card">
+              <h3 class="card-title">⚙️ Engine Info</h3>
+              <div id="engine-info" class="engine-info-grid"></div>
+            </div>
+            <div class="card glass" id="tier-distribution-card">
+              <h3 class="card-title">🏷️ Subscription Tiers</h3>
+              <div id="tier-bars" class="tier-bars"></div>
+            </div>
+            <div class="card glass" id="recent-events-card">
+              <h3 class="card-title">📡 Recent Events</h3>
+              <div id="recent-events" class="event-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══ Products View ══ -->
+        <section id="view-products" class="view">
+          <div class="view-toolbar">
+            <input type="text" id="product-search" class="toolbar-input" placeholder="Search products...">
+            <select id="product-category" class="toolbar-select">
+              <option value="">All Categories</option>
+            </select>
+          </div>
+          <div id="product-grid" class="product-grid"></div>
+        </section>
+
+        <!-- ══ Subscriptions View ══ -->
+        <section id="view-subscriptions" class="view">
+          <h2 class="section-title">Subscription Plans</h2>
+          <div id="plans-grid" class="plans-grid"></div>
+          <h2 class="section-title" style="margin-top:2rem;">Entitlement Matrix</h2>
+          <div id="entitlement-matrix" class="entitlement-matrix glass"></div>
+        </section>
+
+        <!-- ══ Activity Feed View ══ -->
+        <section id="view-activity" class="view">
+          <div id="activity-feed" class="activity-feed"></div>
+        </section>
+
+        <!-- ══ API Playground View ══ -->
+        <section id="view-api-playground" class="view">
+          <div class="playground-layout">
+            <div class="playground-sidebar glass">
+              <h3 class="card-title">Endpoints</h3>
+              <div id="endpoint-list" class="endpoint-list"></div>
+            </div>
+            <div class="playground-main">
+              <div class="playground-request glass">
+                <div class="request-header">
+                  <select id="req-method" class="method-select">
+                    <option value="GET">GET</option>
+                    <option value="POST">POST</option>
+                    <option value="PUT">PUT</option>
+                    <option value="PATCH">PATCH</option>
+                    <option value="DELETE">DELETE</option>
+                  </select>
+                  <input type="text" id="req-url" class="url-input" placeholder="/v1/products" value="/v1/products">
+                  <button id="send-request" class="btn btn-primary">Send</button>
+                </div>
+                <div class="request-body-section">
+                  <label class="body-label">Request Body (JSON)</label>
+                  <textarea id="req-body" class="body-editor" placeholder='{ "key": "value" }' rows="5"></textarea>
+                </div>
+              </div>
+              <div class="playground-response glass">
+                <div class="response-header">
+                  <span class="response-status" id="res-status">—</span>
+                  <span class="response-time" id="res-time"></span>
+                </div>
+                <pre id="res-body" class="response-body">Send a request to see the response</pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ═══ Login Modal ═══ -->
+  <div id="login-modal" class="modal-overlay" style="display:none;">
+    <div class="modal glass">
+      <h2 class="modal-title">⚡ Sign In to NexusForge</h2>
+      <form id="login-form" class="login-form">
+        <div class="form-group">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" value="admin@nexusforge.io" required>
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" value="admin123" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Sign In</button>
+        <p class="login-hint">Demo: admin@nexusforge.io / admin123</p>
+      </form>
+      <button id="close-modal" class="modal-close">✕</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
