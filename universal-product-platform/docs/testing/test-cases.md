@@ -1,5 +1,6 @@
 # Test Case Index
 
+
 | ID | Area | Scenario | Expected |
 |---|---|---|---|
 | TC-001 | Auth | Register valid user | User created |
