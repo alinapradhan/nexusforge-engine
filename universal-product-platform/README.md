@@ -3,7 +3,6 @@
 **NexusForge Engine** is a high-performance, modular digital commerce platform and developer engine. Built for modern digital products, developer tools, AI micro-SaaS, and multi-tier subscription applications, it provides complete out-of-the-box infrastructure for catalog management, user identity & RBAC, recurring billing & entitlement enforcement, recommendation algorithms, activity feed streaming, and operational analytics.
 
 ##  Key Features
-
 - **Runnable API Server:** Production-grade REST API server built with Express and modular domain routing.
 - **Glassmorphic Web Dashboard:** Sleek, dark-mode operations center (`http://localhost:3000`) with real-time analytics graphs, product browser, entitlement matrix, activity feed, and API playground.
 - **Identity & Role-Based Access Control (RBAC):** JWT authentication, bcrypt password hashing, user registration, profile management, and role authorization (`admin`, `customer`).
