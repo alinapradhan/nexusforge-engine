@@ -1,7 +1,5 @@
 # NexusForge Engine
  
-> **API-First Universal Digital Product, Subscription & Analytics Operating System**
-
 **NexusForge Engine** is a high-performance, modular digital commerce platform and developer engine. Built for modern digital products, developer tools, AI micro-SaaS, and multi-tier subscription applications, it provides complete out-of-the-box infrastructure for catalog management, user identity & RBAC, recurring billing & entitlement enforcement, recommendation algorithms, activity feed streaming, and operational analytics.
 
 ##  Key Features
