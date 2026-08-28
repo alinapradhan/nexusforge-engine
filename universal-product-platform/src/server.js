@@ -2,7 +2,6 @@
  * NexusForge Engine — Main Server
  * ================================
  * API-first digital product, catalog, subscription & analytics platform.
- *
  * Start: node src/server.js
  * Dashboard: http://localhost:3000
  */
