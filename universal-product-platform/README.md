@@ -2,10 +2,6 @@
  
 > **API-First Universal Digital Product, Subscription & Analytics Operating System**
 
-[![NexusForge Status](https://img.shields.io/badge/engine-online-success?style=flat-square)](http://localhost:3000)
-[![Node.js](https://img.shields.io/badge/node->=20.0.0-blue?style=flat-square)](https://nodejs.org)
-[![Tests](https://img.shields.io/badge/tests-passing-brightgreen?style=flat-square)](tests)
-
 **NexusForge Engine** is a high-performance, modular digital commerce platform and developer engine. Built for modern digital products, developer tools, AI micro-SaaS, and multi-tier subscription applications, it provides complete out-of-the-box infrastructure for catalog management, user identity & RBAC, recurring billing & entitlement enforcement, recommendation algorithms, activity feed streaming, and operational analytics.
 
 ##  Key Features
