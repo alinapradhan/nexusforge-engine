@@ -76,7 +76,6 @@ npm run test:api
 npm run test:e2e
 ```
 
-
 ##  API Domain Catalog
 
 | Domain | Base Path | Endpoints |
